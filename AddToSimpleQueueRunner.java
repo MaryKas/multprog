@@ -3,8 +3,8 @@ import java.util.AbstractCollection;
 
 public class AddToSimpleQueueRunner extends QueueAbstractRunner {
 
-        public AddToSimpleQueueRunner(AbstractCollection queue, Integer count,int loopSize) {
-            super(queue,count,loopSize);
+        public AddToSimpleQueueRunner(AbstractCollection queue, Integer count,int loopSize, String resultMeasure) {
+            super(queue,count,loopSize,resultMeasure);
         }
 
         @Override

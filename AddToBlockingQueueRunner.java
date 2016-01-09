@@ -4,8 +4,8 @@ import java.util.concurrent.BlockingQueue;
 
 public class AddToBlockingQueueRunner extends QueueAbstractRunner {
 
-    public AddToBlockingQueueRunner(AbstractCollection queue, Integer count,int loopSize) {
-       super(queue,count,loopSize);
+    public AddToBlockingQueueRunner(AbstractCollection queue, Integer count,int loopSize, String resultMeasure) {
+       super(queue,count,loopSize,resultMeasure);
     }
 
     @Override

@@ -3,8 +3,8 @@ import java.util.concurrent.BlockingQueue;
 
 public class DeleteFromBlockingQueueRunner extends QueueAbstractRunner {
 
-    public DeleteFromBlockingQueueRunner(AbstractCollection queue, Integer count,int loopSize) {
-        super(queue,count,loopSize);
+    public DeleteFromBlockingQueueRunner(AbstractCollection queue, Integer count,int loopSize,String resultMeasure) {
+        super(queue,count,loopSize,resultMeasure);
     }
 
     @Override

@@ -5,8 +5,10 @@ import java.util.concurrent.*;
 public class Main {
 
     static  int NTHREADS = 3;
-    static final int SIZE = 100000;
+    static final int SIZE = 1500000;
     static String operationType="add";
+    static String resultMeasure = "latency";
+
 
     public static void main(String[] args) throws InterruptedException {
         long count= 0;
@@ -25,6 +27,7 @@ public class Main {
             if (operationType=="pop"){
                 queue.addAll(Collections.nCopies(NTHREADS*SIZE,"Some String"));
             }
+            resultMeasure = args[3];
         }
         else {
             System.out.println("Not enough arguments");
@@ -40,15 +43,15 @@ public class Main {
 
                 case "1":case "2":case "3":
                     if(operationType=="add")
-                        worker = new AddToBlockingQueueRunner(queue, i + 1, SIZE);
+                        worker = new AddToBlockingQueueRunner(queue, i + 1, SIZE, resultMeasure);
                     else
-                        worker = new DeleteFromBlockingQueueRunner(queue, i + 1, SIZE);
+                        worker = new DeleteFromBlockingQueueRunner(queue, i + 1, SIZE, resultMeasure);
                         break;
                 default:
                     if(operationType=="add")
-                        worker = new AddToSimpleQueueRunner(queue,i+1,SIZE);
+                        worker = new AddToSimpleQueueRunner(queue,i+1,SIZE, resultMeasure);
                     else
-                        worker = new DeleteFromSimpleQueueRunner(queue, i + 1, SIZE);
+                        worker = new DeleteFromSimpleQueueRunner(queue, i + 1, SIZE, resultMeasure);
             }
             threads.add(worker);
 

@@ -6,8 +6,8 @@ import java.util.PriorityQueue;
 public class DeleteFromSimpleQueueRunner extends QueueAbstractRunner {
 
 
-    public DeleteFromSimpleQueueRunner(AbstractCollection queue, Integer count, int loopSize) {
-        super(queue,count,loopSize);
+    public DeleteFromSimpleQueueRunner(AbstractCollection queue, Integer count, int loopSize, String resultMeasure) {
+        super(queue,count,loopSize,resultMeasure);
     }
 
     @Override
