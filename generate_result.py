@@ -6,10 +6,10 @@ import sys
 
 threads = [1,2,3,4,5,7,10,12,15,20]
 arr = ['LinkedBlockingQueue','ArrayBlockingQueue','PriorityBlockingQueue','PriorityQueue','LinkedList']
-metrics=["throughput"]
+metrics=["latency","throughput"]
 time_arr=[]
 operations=['add','pop']
-n_tests = 10
+n_tests = 50
 
 for m in metrics:
 	for o in operations:
