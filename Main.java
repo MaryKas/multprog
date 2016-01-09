@@ -6,8 +6,9 @@ import java.util.concurrent.*;
  */
 public class Main {
 
-    static  int NTHREADS = 20;
+    static  int NTHREADS = 3;
     static final int SIZE = 100000;
+    static String operationType="add";
 
     public static void main(String[] args) throws InterruptedException {
         long count= 0;
@@ -22,6 +23,10 @@ public class Main {
                 default: queue = new LinkedList<String>();
             }
             NTHREADS = Integer.parseInt(args[1]);
+            operationType = args[2];
+            if (operationType=="pop"){
+                queue.addAll(Collections.nCopies(NTHREADS*SIZE,"Some String"));
+            }
         }
         else {
             System.out.println("Not enough arguments");
@@ -35,8 +40,17 @@ public class Main {
             Callable worker;
             switch (args[0]) {
 
-                case "1":case "2":case "3":worker = new AddToBlockingQueueRunner(queue, i + 1, SIZE);break;
-                default: worker = new AddToSimpleQueueRunner(queue,i+1,SIZE);
+                case "1":case "2":case "3":
+                    if(operationType=="add")
+                        worker = new AddToBlockingQueueRunner(queue, i + 1, SIZE);
+                    else
+                        worker = new DeleteFromBlockingQueueRunner(queue, i + 1, SIZE);
+                        break;
+                default:
+                    if(operationType=="add")
+                        worker = new AddToSimpleQueueRunner(queue,i+1,SIZE);
+                    else
+                        worker = new DeleteFromSimpleQueueRunner(queue, i + 1, SIZE);
             }
             threads.add(worker);
 

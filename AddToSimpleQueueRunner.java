@@ -3,7 +3,7 @@ import java.util.AbstractCollection;
 /**
  * Created by mls on 08.01.16.
  */
-public class AddToSimpleQueueRunner extends AddToQueueAbstractRunner {
+public class AddToSimpleQueueRunner extends QueueAbstractRunner {
 
 
 
@@ -13,7 +13,7 @@ public class AddToSimpleQueueRunner extends AddToQueueAbstractRunner {
         }
 
         @Override
-        protected void addElementToQueue(int element) {
+        protected void addOrDeleteQueueElement(int element) {
                 synchronized (queue) {
                         queue.add("added element " + element);
                 }
