@@ -1,9 +1,7 @@
 import java.util.*;
 import java.util.concurrent.*;
 
-/**
- * Created by mls on 06.01.16.
- */
+
 public class Main {
 
     static  int NTHREADS = 3;

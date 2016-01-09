@@ -3,9 +3,6 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 
-/**
- * Created by mls on 09.01.16.
- */
 public class DeleteFromSimpleQueueRunner extends QueueAbstractRunner {
 
 
