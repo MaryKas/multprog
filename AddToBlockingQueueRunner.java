@@ -11,7 +11,11 @@ public class AddToBlockingQueueRunner extends QueueAbstractRunner {
     @Override
     protected void addOrDeleteQueueElement(int element) {
         try {
-            ((BlockingQueue)queue).put("added element "+element);
+            if (queue.getClass()==OwnArrayBlockingQueue.class)
+                ((OwnArrayBlockingQueue)queue).put("added element "+element);
+            else
+                ((BlockingQueue)queue).put("added element "+element);
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -9,8 +9,11 @@ public class DeleteFromBlockingQueueRunner extends QueueAbstractRunner {
 
     @Override
     protected void addOrDeleteQueueElement(int element) {
-
+        if (queue.getClass()==OwnArrayBlockingQueue.class)
+            ((OwnArrayBlockingQueue)queue).poll();
+        else
             ((BlockingQueue)queue).poll();
+
 
     }
 
