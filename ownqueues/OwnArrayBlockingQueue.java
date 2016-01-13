@@ -1,13 +1,12 @@
 package ownqueues;
 
 import java.util.AbstractCollection;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by mls on 11.01.16.
- */
+
 public class OwnArrayBlockingQueue<T> extends AbstractCollection<T> implements OwnQueue<T> {
 
     private Object[] array;
@@ -41,6 +40,14 @@ public class OwnArrayBlockingQueue<T> extends AbstractCollection<T> implements O
 
     }
 
+    @Override
+    public boolean addAll(Collection<? extends T> collection){
+        for (T element: collection){
+            put(element);
+        }
+        return true;
+    }
+
     @SuppressWarnings("unchecked")
     public T poll(){
         T result;
@@ -58,6 +65,8 @@ public class OwnArrayBlockingQueue<T> extends AbstractCollection<T> implements O
         }
         return result;
     }
+
+
 
     private void moveArray(){
         Object[] array2 = new Object[array.length];

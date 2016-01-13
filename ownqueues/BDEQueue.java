@@ -1,13 +1,11 @@
 package ownqueues;
 
 import java.util.AbstractCollection;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
-/**
- * Created by mls on 13.01.16.
- */
-public class BDEQueue<T> extends AbstractCollection implements OwnQueue<T> {
+public class BDEQueue<T> extends AbstractCollection<T> implements OwnQueue<T> {
 
     Object[] tasks;
     volatile int bottom;
@@ -25,11 +23,15 @@ public class BDEQueue<T> extends AbstractCollection implements OwnQueue<T> {
             bottom++;
     }
 
-    /**
-     * Returns an iterator over the elements contained in this collection.
-     *
-     * @return an iterator over the elements contained in this collection
-     */
+    @Override
+    public boolean addAll(Collection<? extends T> collection){
+        for (T element: collection){
+            put(element);
+        }
+        return true;
+
+    }
+
     @Override
     public Iterator iterator() {
         return null;
