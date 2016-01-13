@@ -1,18 +1,20 @@
+package queuerunners;
+
 import java.util.AbstractCollection;
 import java.util.concurrent.BlockingQueue;
 
 
-public class AddToBlockingQueueRunner extends QueueAbstractRunner {
+public class AddToConcurrentQueueRunner extends QueueAbstractRunner {
 
-    public AddToBlockingQueueRunner(AbstractCollection queue, Integer count,int loopSize, String resultMeasure) {
+    public AddToConcurrentQueueRunner(AbstractCollection queue, Integer count, int loopSize, String resultMeasure) {
        super(queue,count,loopSize,resultMeasure);
     }
 
     @Override
     protected void addOrDeleteQueueElement(int element) {
         try {
-            if (queue.getClass()==OwnArrayBlockingQueue.class)
-                ((OwnArrayBlockingQueue)queue).put("added element "+element);
+            if (queue.getClass().getInterfaces()[0]== OwnQueue.class)
+                ((OwnQueue)queue).put("added element "+element);
             else
                 ((BlockingQueue)queue).put("added element "+element);
 

@@ -4,12 +4,13 @@ import subprocess
 import math
 import sys
 
-threads = [1,2,3]
-arr = ['LinkedBlockingQueue','ArrayBlockingQueue','PriorityBlockingQueue','PriorityQueue','OwnArrayBlockingQueue','LinkedList']
+threads = [1,2,3,4,5,7,10,12,15,20]
+arr = ['LinkedBlockingQueue','ArrayBlockingQueue','PriorityBlockingQueue','PriorityQueue','OwnArrayBlockingQueue','BDEQueue','LinkedList']
 metrics=["latency"]
 time_arr=[]
 operations=['add']
 n_tests = 20
+
 
 for m in metrics:
 	for o in operations:

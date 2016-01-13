@@ -1,3 +1,4 @@
+package ownqueues;
 
 import java.util.AbstractCollection;
 import java.util.Iterator;
@@ -7,7 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by mls on 11.01.16.
  */
-public class OwnArrayBlockingQueue<T> extends AbstractCollection<T>{
+public class OwnArrayBlockingQueue<T> extends AbstractCollection<T> implements OwnQueue<T> {
 
     private Object[] array;
     private int top;
@@ -27,8 +28,10 @@ public class OwnArrayBlockingQueue<T> extends AbstractCollection<T>{
     public void put(T element){
         lock.lock();
         try{
-            if(bottom>array.length/2+top)
+            if(bottom>array.length/2+top) {
+                System.out.println(bottom +" "+ top +  " " + array.length);
                 throw new ArrayIndexOutOfBoundsException();
+            }
             array[bottom] = element;
             bottom++;
         }
